@@ -2,11 +2,19 @@
 
 Command line tool that prettly prints your folder structure.
 
-_Similar to [tree](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tree) but with max depth and ignore options_
+_Similar to [tree](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tree) but with much more options specially for Windows_
 
 Usage after installation (see steps bellow):
 
-    fdstruct <path> [-m <depth>] [-i <ignore_folders>]
+    Usage: fdstruct <path> [-m <depth>] [-i <ignore_patterns>] [-a] [-o <output_file>]
+
+- \<path> is the path of the folder to be mapped, or ". " for current folder.
+- \<depth> specifies the maximum depth of folders the tool with go to.
+- \<ignore_patterns> are folders, files or file extensions to ignore to ignore:
+  - put "/" in front of folder names
+  - to ignore file extensions use "_.\<file extension>", for example "_.md"
+- Default behaviour is to ignore hidden folders (that starts with an "."), if you dont want that to happen, use the flag "-a".
+- You can output the resulting structure to a text file by providing the flag "-o" followed by the name of the file.
 
 ## Installation
 
@@ -79,14 +87,14 @@ For Linux and macOS, making the script executable and adding the shebang line al
 If you wish to not install it as guided above, you can still use this tool by explicitly running the python script.
 However, anytime you wish to use it, you will have to provide python with the full path to the fdstruct.py file before actually providing the path that you wish to print and the optionall parameters, like this:
 
-    python C:\path\to\fdstruct.py <path> [-m <depth>] [-i <ignore_folders>]
+    python C:\path\to\fdstruct.py <path> [-m <depth>] [-i <ignore_patterns>] [-a] [-o <output_file>]
 
 To make this easier, you can first navigate to the folder that the fdsctruct.py file is and you can provide only the path that you want to print, like this:
 
-    python fdstruct.py C:\path\that\you\want\to\print [-m <depth>] [-i <ignore_folders>]
+    python fdstruct.py C:\path\that\you\want\to\print [-m <depth>] [-i <ignore_patterns>] [-a] [-o <output_file>]
 
 ### Example
 
-If you saved the fdstruct.py file into your Windows Desktop and your username is "Ritchie" than the path to the file is `C:\Users\Ritchie\Desktop\fdstruct`. Suppose you want to map and print out a folder called "TopSecret" present in your Documents folder, you want it to go only 3 levels deep "for security reasons" and also want to ignore the folder "SuperTopSecret", then you use it like this:
+If you saved the fdstruct.py file into your Windows Desktop and your username is "Ritchie" than the path to the file is `C:\Users\Ritchie\Desktop\fdstruct`. Suppose you want to map and print out a folder called "TopSecret" present in your Documents folder, you want it to go only 3 levels deep "for security reasons" and also want to ignore the folder "/SuperTopSecret" and all the files ended with ".rmvb", then you use it like this:
 
-    python C:\Users\Ritchie\Desktop\fdstruct C:\Users\Ritchie\Documents\TopSecret -m 3 -i SuperTopSecret
+    python C:\Users\Ritchie\Desktop\fdstruct C:\Users\Ritchie\Documents\TopSecret -m 3 -i /SuperTopSecret *.rmvb
