@@ -8,7 +8,9 @@ Usage after installation (see steps bellow):
 
 ## Installation
 
-_You can run this script without properly installing it on your machine, although this will make it much more convenient. If you wish to not install it, see next section._
+_You can run this script without properly installing it on your machine, although this will make it much more convenient. If you wish to not install it, see the last section._
+
+#### **First, you will need to copy the fdstruct.py file in this repo and save it to your computer, and then follow this instructions depending on your operating system:**
 
 ### Windows
 
@@ -62,10 +64,27 @@ For example, you can now simply type:
 
 This command should execute your script with the specified parameters, displaying the folder structure.
 
-If you are on Windows and for some reason it doesn't workk, try changing the bat file to use "python.exe" instead of "pythonw.exe".
+If you are on Windows and for some reason it doesn't work, try changing the bat file to use "python.exe" instead of "pythonw.exe".
 
 ### Some clarifications:
 
 For Windows, the batch file acts as a wrapper that calls Python to execute your script. Adjust the path to pythonw.exe if necessary, depending on where Python is installed on your system.
 
 For Linux and macOS, making the script executable and adding the shebang line allows the system to recognize it as a standalone command. The optional symbolic link step makes the script globally accessible without having to specify its full path.
+
+## Using it without installing
+
+If you wish to not install it as guided above, you can still use this tool by explicitly running the python script.
+However, anytime you wish to use it, you will have to provide python with the full path to the fdstruct.py file before actually providing the path that you wish to print and the optionall parameters, like this:
+
+    python C:\path\to\fdstruct.py <path> [-m <depth>] [-i <ignore_folders>]
+
+To make this easier, you can first navigate to the folder that the fdsctruct.py file is and you can provide only the path that you want to print, like this:
+
+    python fdstruct.py C:\path\that\you\want\to\print [-m <depth>] [-i <ignore_folders>]
+
+### Example
+
+If you saved the fdstruct.py file into your Windows Desktop and your username is "Ritchie" than the path to the file is `C:\Users\Ritchie\Desktop\fdstruct`. Suppose you want to map and print out a folder called "TopSecret" present in your Documents folder, you want it to go only 3 levels deep "for security reasons" and also want to ignore the folder "SuperTopSecret", then you use it like this:
+
+    python C:\Users\Ritchie\Desktop\fdstruct C:\Users\Ritchie\Documents\TopSecret -m 3 -i SuperTopSecret
