@@ -2,6 +2,8 @@
 
 Command line tool that prettly prints your folder structure.
 
+_Similar to [tree](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tree) but with max depth and ignore options_
+
 Usage after installation (see steps bellow):
 
     fdstruct <path> [-m <depth>] [-i <ignore_folders>]
